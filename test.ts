@@ -1,8 +1,8 @@
 import { Account, Contract, number, shortString } from "starknet";
 import { RpcProvider } from "starknet";
 
-const CLASS_HASH = '0x014a8192aca57f1789442116746ce9c90c130d28e7ba277a83311c465e5e0809';
-const CONTRACT_ADDRESS = '0x047b604c233bccca4b1d4d7bcbb10ac3ad84b24eff6b355002809020dc800cdb';
+const CLASS_HASH = '0x0474949d7bb9292b35d33603e1a2762143fffbea2785aae4bede32e2872e865a';
+const CONTRACT_ADDRESS = '0x00d4ccd1ce0660056ed349d245fdec7f6ceb574ae7f867ef6e9c0db52e3feef8';
 
 const run = async () => {
     const provider = new RpcProvider({ 
@@ -22,7 +22,7 @@ const run = async () => {
       const contract = new Contract(abi, CONTRACT_ADDRESS, provider);
   
       contract.connect(account);
-      const myCall = contract.populate('create', ['0x01329EDaC874bb837637D7a4eED5E1093162aBc7D7a663f05428d39A8AB9552D', 2, 'https://twitter.com']);
+      const myCall = contract.populate('create', ['https://youtube.com']);
 
       console.log('MyCall:', myCall);
 
