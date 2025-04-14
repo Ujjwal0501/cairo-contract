@@ -3,10 +3,9 @@
 
 const UPGRADER_ROLE: felt252 = selector!("UPGRADER_ROLE");
 
-use starknet::ContractAddress;
 #[starknet::interface]
 pub trait IAgent<TContractState> {
-    fn create(ref self: TContractState, to: ContractAddress, amount: u256, uri: ByteArray);
+    fn create(ref self: TContractState, uri: ByteArray);
     fn update_liveness(ref self: TContractState, token_id: u256, calls_count: u256, msg_count: u256);
     fn update_token_metadata_uri(ref self: TContractState, token_id: u256, new_uri: ByteArray);
     fn die(ref self: TContractState, token_id: u256);
@@ -96,9 +95,10 @@ use openzeppelin::access::accesscontrol::{AccessControlComponent, DEFAULT_ADMIN_
     // Override the mint function
     #[abi(embed_v0)]
     impl AgentImpl of super::IAgent<ContractState> {
-        fn create(ref self: ContractState, to: ContractAddress, amount: u256, uri: ByteArray) {
+        fn create(ref self: ContractState, uri: ByteArray) {
+            let caller = starknet::get_caller_address();
             let token_id = self.counter.read();
-            self.erc721.mint(to, amount);
+            self.erc721.mint(caller, token_id);
             self.token_metadata.write(token_id, (uri, false, 0, 0));
             self.counter.write(token_id + 1);
             let (curi, _, _, _) = self.token_metadata.read(token_id);
