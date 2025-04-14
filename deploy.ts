@@ -5,12 +5,12 @@ const CLASS_HASH = '0x014a8192aca57f1789442116746ce9c90c130d28e7ba277a83311c465e
 
 const run = async () => {
     const provider = new RpcProvider({ 
-        nodeUrl: 'http://localhost:5050',
+        nodeUrl: 'https://starknet-sepolia.public.blastapi.io',
       });
     const account = new Account(
         provider, 
-        '0x064b48806902a367c8598f4f95c305e8c1a1acba5f082d294a43793113115691', 
-        '0x0000000000000000000000000000000071d7bb07b9a64f6f78ac4c816aff4da9'
+        '0x01329EDaC874bb837637D7a4eED5E1093162aBc7D7a663f05428d39A8AB9552D', 
+        '0x02e13f08f7bd2e4e4cc568788bf7b03ec3995cb9fe05b30cf7a2f27e57817e7e'
       );
 
     const deployResponse = await account.deployContract({ 

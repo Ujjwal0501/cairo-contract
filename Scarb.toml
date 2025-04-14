@@ -13,3 +13,4 @@ starknet = "2.10.1"
 cairo_test = "2.11.4"
 
 [[target.starknet-contract]]
+casm = true
