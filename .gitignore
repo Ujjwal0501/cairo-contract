@@ -1,0 +1,23 @@
+target
+# Rust
+*.rs.bk
+*.d
+*.o
+*.rlib
+*.so
+Scarb.lock
+Scarb.toml.orig
+target/
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+dist/
+build/
+.DS_Store
+.env
+.env.local
+.env.*.local
